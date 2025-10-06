@@ -4,10 +4,17 @@ from email.message import EmailMessage
 import csv
 from typing import List, Dict
 import os
+import os
 import argparse
 import time
+import warnings
 from dotenv import load_dotenv
 from template import SUBJECT_TEMPLATE, EMAIL_BODY, render_subject, render_body
+
+# Suppress TensorFlow and other library warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow logs
+os.environ['GRPC_VERBOSITY'] = 'NONE'  # Suppress gRPC logs
+warnings.filterwarnings('ignore')  # Suppress Python warnings
 
 # Load environment variables from .env file
 load_dotenv()
@@ -114,7 +121,7 @@ def main():
             send_emails(recipients)
         else:
             print("Email sending cancelled.")
-    else:
+    elif not args.search:
         print("No action specified. Use --search to find companies or --send to send emails.")
 
 if __name__ == "__main__":
