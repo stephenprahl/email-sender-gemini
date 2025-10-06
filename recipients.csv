@@ -1,3 +1,2 @@
-name,email,company_name
-Stephen Prahl,wickeduiai@gmail.com,WickedUI
-WickedUI,stephen@wicked-ui.com,WickedUI
+name,email,company_name,website,industry,description
+Hiring Manager,stephen@wicked-ui.com,Weltman Home Services,https://www.weltmanhomeservices.com/,"Plumbing, HVAC, and Electrical","A family-owned and operated company serving northern and central New Jersey since 1962. They provide a full range of plumbing, heating, air conditioning, and electrical services."
