@@ -9,7 +9,7 @@ SUBJECT_TEMPLATE = "Unlock Your Business Potential with AI & Automation"
 EMAIL_BODY = """\
 Dear {name},
 
-I hope this message finds you well. My name is Stephen Prahl, and I'm a Software & AI Engineer as well as owner at WickedUI out of Brick - NJ, with a passion for helping businesses like {company_name} harness the power of artificial intelligence and automation.
+I hope this message finds you well. My name is Stephen, and I'm a Software & AI Engineer as well as owner at WickedUI out of Brick - NJ, with a passion for helping businesses like {company_name} harness the power of artificial intelligence and automation.
 
 I'm reaching out because I'd like to offer my expertise to you completely free of charge. I believe that every business, regardless of size, can benefit from strategic AI implementation and process automation. My goal is to help you:
 
