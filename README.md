@@ -1,8 +1,9 @@
 <div align="center">
-  <img src="images/logo.png" alt="WickedUI Logo" width="800" height="400"/>
   <h1>📧 WickedUI Email Outreach</h1>
   <p>A powerful AI-powered email automation tool by <a href="https://wicked-ui.com" target="_blank">WickedUI</a></p>
   <p>Find companies using natural language and send them personalized emails at scale.</p>
+    <img src="images/logo.png" alt="WickedUI Logo" width="300" height="200"/>
+
 </div>
 
 ## 🔥 WickedUI Pro Features
