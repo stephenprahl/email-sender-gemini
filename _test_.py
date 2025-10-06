@@ -40,6 +40,8 @@ def test_gemini_connection():
 def test_company_search():
     """Test company search functionality."""
     print("\n🔎 Testing company search...")
+    test_csv = "test_recipients.csv"
+    
     try:
         model = setup_gemini(os.getenv("GEMINI_API_KEY"))
         test_query = "AI companies in New York"
@@ -48,38 +50,46 @@ def test_company_search():
         print(f"Searching for: {test_query}")
         companies = find_companies_with_emails(test_query, model, max_results)
         
-        if companies and len(companies) > 0:
-            print(f"✅ Found {len(companies)} companies:")
-            for i, company in enumerate(companies[:3], 1):  # Show first 3 for brevity
-                print(f"   {i}. {company.get('name', 'N/A')} - {company.get('email', 'N/A')}")
-            
-            # Test saving to CSV
-            test_csv = "test_recipients.csv"
-            save_companies_to_csv(companies, test_csv)
-            print(f"✅ Saved companies to {test_csv}")
-            
-            # Verify CSV was created and has data
-            with open(test_csv, 'r') as f:
-                reader = csv.DictReader(f)
-                rows = list(reader)
-                print(f"✅ Verified {len(rows)} rows in {test_csv}")
-            
-            return True
-        else:
-            print("❌ No companies found or error occurred")
+        if not companies or len(companies) == 0:
+            print("❌ No companies found")
             return False
             
+        print(f"✅ Found {len(companies)} companies:")
+        for i, company in enumerate(companies[:3], 1):  # Show first 3 for brevity
+            print(f"   {i}. {company.get('name', 'N/A')} - {company.get('email', 'N/A')}")
+        
+        # Test saving to CSV
+        save_companies_to_csv(companies, test_csv)
+        print(f"✅ Saved companies to {test_csv}")
+        
+        # Verify CSV was created and has data
+        with open(test_csv, 'r') as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+            print(f"✅ Verified {len(rows)} rows in {test_csv}")
+            
+            # Verify the name field uses company name
+            for row in rows:
+                if row['name'] != row['company_name']:
+                    print(f"❌ Name field should match company_name")
+                    return False
+            print("✅ Verified name field matches company_name")
+        
+        return True
+        
+    except FileNotFoundError:
+        print(f"❌ Error: {test_csv} not found")
+        return False
     except Exception as e:
-        print(f"❌ Company search test failed: {e}")
+        print(f"❌ Error in test_company_search: {str(e)}")
         return False
 
 def test_email_sending():
     """Test email sending functionality."""
     print("\n📧 Testing email sending...")
     try:
-        # Create a test recipient
         test_recipient = {
-            'name': 'Test Recipient',
+            'name': 'Test Company',
             'email': os.getenv("EMAIL_ADDRESS"),  # Send to yourself for testing
             'company_name': 'Test Company Inc.'
         }
@@ -96,7 +106,7 @@ def test_email_sending():
         return True
         
     except Exception as e:
-        print(f"❌ Email sending test failed: {e}")
+        print(f"❌ Error in test_email_sending: {str(e)}")
         return False
 
 def run_all_tests():

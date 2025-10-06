@@ -50,7 +50,7 @@ def save_companies_to_csv(companies: List[Dict[str, str]], filename: str = 'reci
             writer.writeheader()
             for company in companies:
                 writer.writerow({
-                    'name': 'Hiring Manager',
+                    'name': company.get('name', ''),  # Use company name instead of 'Hiring Manager'
                     'email': company.get('email', ''),
                     'company_name': company.get('name', ''),
                     'website': company.get('website', ''),
