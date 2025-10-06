@@ -26,7 +26,7 @@ Looking forward to your thoughts.
 
 Best regards,
 Stephen Prahl
-Software & AI Engineer
+Software & AI Engineer - https://stephenprahl.vercel.app
 Wicked UI - https://wicked-ui.com
 """
 
