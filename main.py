@@ -4,7 +4,6 @@ from email.message import EmailMessage
 import csv
 from typing import List, Dict
 import os
-import os
 import argparse
 import time
 import warnings
