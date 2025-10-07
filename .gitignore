@@ -1,0 +1,4 @@
+__pycache__
+.venv
+recipients.csv
+test_recipients.csv
